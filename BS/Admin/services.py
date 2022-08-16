@@ -47,6 +47,7 @@ def delete_existed_user_role(id):
         else:
             return jsonify(message=constants.USER_ROLE_OCCUPIES_BY_USER), 404
 
+
 #  --------- for user role services GET/POST/DELETE ends
 
 #  --------- for user services /POST/ starts
@@ -70,6 +71,7 @@ def add_new_user():
     except ValidationError as err:
         return jsonify(err.messages)
 
+
 def get_all_users():
     get_all_user_schema = UserDataSchema(many=True)
     users = User.query.all()
@@ -77,12 +79,26 @@ def get_all_users():
     json_user_detail = get_all_user_schema.dump(users)
     return jsonify(json_user_detail)
 
+
 def get_all_branch_officers():
     branch_officer_role = UserRoles.query.filter_by(role="branch officer").first()
     get_all_branch_officer_schema = UserDataSchema(many=True)
     branch_officers = User.query.filter_by(user_role_id=branch_officer_role.id).all()
     json_branch_officers_detail = get_all_branch_officer_schema.dump(branch_officers)
     return jsonify(json_branch_officers_detail)
+
+def delete_existed_branch_officer(id):
+    delete_branch_officer = User.query.filter_by(id=id).first()
+    if not delete_branch_officer:
+        return jsonify(message=constants.USER_DOES_NOT_EXIST), 404
+    else:
+        role = UserRoles.query.filter_by(role="branch officer").first()
+        if delete_branch_officer.user_role_id != role.id:
+            return jsonify(message=constants.USER_IS_NOT_BRANCH_OFFICER), 404
+        else:
+            db.session.delete(delete_branch_officer)
+            db.session.commit()
+            return jsonify(message=constants.BRANCH_OFFICER_DELETED), 200
 
 
 def get_all_loan_officers():
@@ -93,12 +109,40 @@ def get_all_loan_officers():
     return jsonify(json_loan_officers_detail)
 
 
+def delete_existed_loan_officer(id):
+    delete_loan_officer = User.query.filter_by(id=id).first()
+    if not delete_loan_officer:
+        return jsonify(message=constants.USER_DOES_NOT_EXIST), 404
+    else:
+        role = UserRoles.query.filter_by(role="loan officer").first()
+        if delete_loan_officer.user_role_id != role.id:
+            return jsonify(message=constants.USER_IS_NOT_LOAN_OFFICER), 404
+        else:
+            db.session.delete(delete_loan_officer)
+            db.session.commit()
+            return jsonify(message=constants.LOAN_OFFICER_DELETED), 200
+
+
 def get_all_insurance_officers():
     insurance_officer_role = UserRoles.query.filter_by(role="insurance officer").first()
     get_all_insurance_officer_schema = UserDataSchema(many=True)
     insurance_officers = User.query.filter_by(user_role_id=insurance_officer_role.id).all()
     json_insurance_officers_detail = get_all_insurance_officer_schema.dump(insurance_officers)
     return jsonify(json_insurance_officers_detail)
+
+
+def delete_existed_insurance_officer(id):
+    delete_insurance_officer = User.query.filter_by(id=id).first()
+    if not delete_insurance_officer:
+        return jsonify(message=constants.USER_DOES_NOT_EXIST), 404
+    else:
+        role = UserRoles.query.filter_by(role="insurance officer").first()
+        if delete_insurance_officer.user_role_id != role.id:
+            return jsonify(message=constants.USER_IS_NOT_INSURANCE_OFFICER), 404
+        else:
+            db.session.delete(delete_insurance_officer)
+            db.session.commit()
+            return jsonify(message=constants.INSURANCE_OFFICER_DELETED), 200
 
 
 #  --------- for user role services /POST/ ends

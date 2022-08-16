@@ -26,7 +26,7 @@ class UserData(MethodView):
         ADMIN CAN ADD THE NEW USER
         AND GIVE THEM RELEVANT USER AUTHORITY [ user role in our case ]
         SUCH AS User/Branch officer/Loan Officer/Insurance Officer
-    """
+    """                                                                                                                                                                                                     
 
     def post(self):
         return services.add_new_user()
@@ -37,26 +37,35 @@ class UserData(MethodView):
 
 class GetAllBranchOfficers(MethodView):
     """
-        GET ALL BRANCH OFFICER'S DATA
+        GET ALL BRANCH OFFICER'S DATA [ get request ]
     """
 
     def get(self):
         return services.get_all_branch_officers()
 
+    def delete(self,id):
+      return services.delete_existed_branch_officer(id)
+
 
 class GetAllLoanOfficers(MethodView):
     """
-        GET ALL LOAN OFFICER'S DATA
+        GET ALL LOAN OFFICER'S DATA [ get request ]
     """
 
     def get(self):
         return services.get_all_loan_officers()
 
+    def delete(self,id):
+      return services.delete_existed_loan_officer(id)
+
 
 class GetAllInsuranceOfficers(MethodView):
     """
-        GET ALL INSURANCE OFFICER'S DATA
+        GET ALL INSURANCE OFFICER'S DATA [ get request ]
     """
 
     def get(self):
         return services.get_all_insurance_officers()
+
+    def delete(self,id):
+      return services.delete_existed_insurance_officer(id)
