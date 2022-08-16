@@ -2,7 +2,7 @@ from flask import request, jsonify
 
 from BS.User import constants
 from BS.User.models import User
-from BS.User.schema import ParticularUserSchema
+from BS.User.schemas import ParticularUserSchema
 
 
 def get_particular_user_data(id):

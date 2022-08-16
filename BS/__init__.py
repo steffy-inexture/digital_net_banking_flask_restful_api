@@ -20,9 +20,11 @@ def create_app(config_class=Config):
         from BS.User.routes import user
         from BS.Bank.routes import bank_detail
         from BS.Officers.routes import officers
+        from BS.Admin.routes import admin
 
         app.register_blueprint(user)
         app.register_blueprint(bank_detail)
         app.register_blueprint(officers)
+        app.register_blueprint(admin)
 
         return app

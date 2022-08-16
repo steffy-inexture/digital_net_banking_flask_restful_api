@@ -5,7 +5,7 @@ from marshmallow import ValidationError
 
 from BS import db
 from BS.User import services
-from BS.User.schema import RegisterUserSchema, ParticularUserSchema
+from BS.User.schemas import RegisterUserSchema, ParticularUserSchema
 from BS.User.utils import is_user
 
 
@@ -18,7 +18,7 @@ class UserRegisteration(MethodView):
             user_register = register_user_schema.load(user_data)
             db.session.add(user_register)
             db.session.commit()
-            return jsonify({'message': 'User has been Created'})
+            return jsonify({'message': 'New User has been Created'})
 
         except ValidationError as err:
             return jsonify(err.messages)

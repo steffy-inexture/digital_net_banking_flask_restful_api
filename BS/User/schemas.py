@@ -8,6 +8,8 @@ from BS.User.models import User
 # KEEP THIS IN MIND THIS IS HOW WE CAN USER FK AND RELATION [ Refer User and UserRoles Table ]
 # user = User.query.filter_by(id=4).first()
 # print(f"***************** {user.user_roles.role}")
+
+
 class RegisterUserSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
