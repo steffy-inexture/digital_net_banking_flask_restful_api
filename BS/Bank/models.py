@@ -38,3 +38,6 @@ class Branches(db.Model):
     def __repr__(self):
         return f"Branches('{self.id}','{self.name}','{self.address}')"
 
+
+
+

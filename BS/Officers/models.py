@@ -7,7 +7,7 @@ class LoanTypes(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
-    rate_interest = db.Column(db.String(120), nullable=False, dafault='0.0')
+    rate_interest = db.Column(db.String(320), nullable=False, default='0.0')
 
     def __repr__(self):
         return f"Atm('{self.id}','{self.name}','{self.rate_interest}')"
@@ -19,7 +19,7 @@ class InsuranceTypes(db.Model):
     """
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
-    monthly_pay = db.Column(db.String(120), nullable=False, dafault='0.0')
+    monthly_pay = db.Column(db.String(120), nullable=False, default='0.0')
 
     def __repr__(self):
         return f"Atm('{self.id}','{self.name}','{self.monthly_pay}')"
