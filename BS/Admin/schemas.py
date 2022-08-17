@@ -8,6 +8,7 @@ class AllUserRolesSchema(ma.SQLAlchemyAutoSchema):
 
     class Meta:
         model = UserRoles
+        ordered = True
         include_fk = True
 
     @post_load
@@ -16,10 +17,12 @@ class AllUserRolesSchema(ma.SQLAlchemyAutoSchema):
 
 class UserDataSchema(ma.SQLAlchemyAutoSchema):
 
+
     class Meta:
         model = User
+        ordered = True
         include_fk = True
 
-    @post_load
+    @post_load                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
     def make_object(self,data,**kwargs):
         return User(**data)

@@ -25,8 +25,8 @@ def add_new_user_role():
         if existed_role:
             return jsonify({'message': constants.USER_ROLE_ALREADY_EXISTED})
         else:
-            new_post_user_role = post_new_user_role_schema.load(new_user_role_data)
-            db.session.add(new_post_user_role)
+            new_post_user = post_new_user_role_schema.load(new_user_role_data)
+            db.session.add(new_post_user)
             db.session.commit()
             return jsonify({'message': constants.NEW_USER_ROLE_ADDED})
 

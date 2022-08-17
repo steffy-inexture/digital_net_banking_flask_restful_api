@@ -6,7 +6,6 @@ from marshmallow import ValidationError
 from BS import db
 from BS.User import services
 from BS.User.schemas import RegisterUserSchema, ParticularUserSchema
-from BS.User.utils import is_user
 
 
 class UserRegisteration(MethodView):
@@ -25,7 +24,7 @@ class UserRegisteration(MethodView):
 
 
 class ParticularUser(MethodView):
-    decorators = [jwt_required(), is_user()]
+    decorators = [jwt_required()]
 
     def get(self, id):
         return services.get_particular_user_data(id)

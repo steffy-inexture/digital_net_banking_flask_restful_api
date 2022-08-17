@@ -92,8 +92,8 @@ def get_particular_atm(id):
 def get_all_branches_data():
     branch_schema = BranchDetailSchema(many=True)
     branches_detail = Branches.query.all()
-    c = branch_schema.dump(branches_detail)
-    return jsonify(BranchDetailSchema)
+    json_data = branch_schema.dump(branches_detail)
+    return jsonify(json_data)
 
 
 def get_particular_branch(id):
