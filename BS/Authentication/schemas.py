@@ -7,12 +7,20 @@ from BS.User.models import User
 class UserDataReg(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = User
-        ordered = True
         include_fk = True
 
     @post_load
     def make_object(self, data, **kwargs):
         return User(**data)
+
+    @validates_schema
+    def validate_user(self, data, **kwargs):
+        errors = {}
+
+        if len(data['user_name']) < 2:
+            errors['length_user_name'] = ['User name must be at least 2 characters long!']
+        if errors:
+            raise ValidationError(errors)
 
 
 class LoginUserSchema(ma.SQLAlchemyAutoSchema):

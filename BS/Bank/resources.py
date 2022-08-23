@@ -3,63 +3,71 @@ from BS.Bank import services
 
 
 class BankDetail(MethodView):
-    """
-        Bank table's GET & POST methods
-    """
+    bank_service = services.BankDetailServices()
 
-    def get(self):
-        return services.get_bank_details()
+    @classmethod
+    def get(cls):
+        return cls.bank_service.get_bank_details()
 
-    def post(self):
-        return services.post_bank_details()
+    @classmethod
+    def post(cls):
+        return cls.bank_service.post_bank_details()
+
 
 class AtmDetail(MethodView):
-    """
-        Atm table's GET ALL ATM & POST Atm methods
-    """
+    all_atm_service = services.AllAtmService()
 
-    def get(self):
-        return services.get_all_atm_data()
+    @classmethod
+    def get(cls):
+        return cls.all_atm_service.get_all_atm_data()
+
 
 class ParticularAtm(MethodView):
-    """
-        Particular one atm's GET, PUT & DELETE Methods
-    """
+    particular_atm_service = services.ParticularAtmServices()
 
-    def get(self,id):
-        return services.get_particular_atm(id)
+    @classmethod
+    def get(cls, id):
+        return cls.particular_atm_service.get_particular_atm(id)
 
-    def post(self):
-        return services.post_atm_data()
+    @classmethod
+    def post(cls):
+        return cls.particular_atm_service.post_atm_data()
 
-    def delete(self, id):
-        return services.delete_particular_atm(id)
+    @classmethod
+    def delete(cls, id):
+        return cls.particular_atm_service.delete_particular_atm(id)
 
-    def put(self, id):
-        return services.put_particular_atm(id)
+    @classmethod
+    def put(cls, id):
+        return cls.particular_atm_service.put_particular_atm(id)
+
 
 class AllBranchesData(MethodView):
-    """
-        For all branches data
-    """
-    def get(self):
-        return services.get_all_branches_data()
+    branch_service = services.BranchServices()
+
+    @classmethod
+    def get(cls):
+        return cls.branch_service.get_all_branches_data()
 
 
 class ParticularBranches(MethodView):
     """
         Particular one branch's GET, PUT & DELETE Methods
     """
+    branch_service = services.BranchServices()
 
-    def get(self,id):
-        return services.get_particular_branch(id)
+    @classmethod
+    def get(cls, id):
+        return cls.branch_service.get_particular_branch(id)
 
-    def post(self):
-        return services.post_branch_data()
+    @classmethod
+    def post(cls):
+        return cls.branch_service.post_branch_data()
 
-    def delete(self, id):
-        return services.delete_particular_branch(id)
+    @classmethod
+    def delete(cls, id):
+        return cls.branch_service.delete_particular_branch(id)
 
-    def put(self, id):
-        return services.put_particular_branch(id)
-
+    @classmethod
+    def put(cls, id):
+        return cls.branch_service.put_particular_branch(id)

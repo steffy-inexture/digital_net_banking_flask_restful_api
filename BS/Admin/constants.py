@@ -18,3 +18,13 @@ BRANCH_OFFICER_DELETED = "Branch officer deleted successfully.."
 
 USER_IS_NOT_INSURANCE_OFFICER = "This user is not Insurance officer.."
 INSURANCE_OFFICER_DELETED = "Insurance officer deleted successfully.."
+
+ACCOUNT_TYPE_ALREADY_EXISTED = "This account type is already exist.."
+NEW_ACC_TYPE_ADDED = "New account type is added successfully.."
+ACC_TYPE_DOES_NOT_EXIST = "Account type does not exist with this id..."
+USER_OCCUPIED_THIS_TYPE = "This type is associated with some user you can not delete this..."
+ACC_TYPE_DELETED = "Account type has been deleted successfully..."
+
+CARD_ACTIVATED = "User's card has been activated successfully..."
+CARD_DEACTIVATED = "User's card has been deactivated successfully..."
+CARD_DATA_IS_NOT_EXISTED='This card is not existed kindly check the card id...'

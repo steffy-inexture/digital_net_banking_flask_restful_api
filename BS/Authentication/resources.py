@@ -4,9 +4,16 @@ from BS.Authentication import services
 
 
 class RegistrationAuth(MethodView):
-    def post(self):
-        return services.post_registration()
+    registration_service = services.RegistrationService()
+
+    @classmethod
+    def post(cls):
+        return cls.registration_service.post_registration()
+
 
 class LoginAuth(MethodView):
-    def post(self):
-        return services.post_login()
+    login_service = services.LoginService()
+
+    @classmethod
+    def post(cls):
+        return cls.login_service.post_login()

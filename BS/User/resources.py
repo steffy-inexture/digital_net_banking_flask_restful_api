@@ -47,3 +47,10 @@ class GetUserRoleById(MethodView):
 
     def get(self,id):
         pass
+
+
+class CardRequest(MethodView):
+    decorators = [jwt_required()]
+
+    def post(self):
+        return services.post_card_request()

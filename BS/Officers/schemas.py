@@ -1,7 +1,7 @@
 from marshmallow import post_load
 
 from BS import ma
-from BS.Officers.models import LoanTypes, InsuranceTypes
+from BS.Bank.models import LoanTypes, InsuranceTypes
 
 
 # schema for loan types starts
