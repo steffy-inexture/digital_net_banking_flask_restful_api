@@ -1,7 +1,7 @@
 from marshmallow import fields, post_load
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
-from BS import ma
+from BS.factory import ma
 from BS.User.models import User
 
 

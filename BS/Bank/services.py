@@ -3,7 +3,7 @@ from flask_jwt_extended import get_jwt_identity
 from marshmallow import ValidationError
 from sqlalchemy import func
 
-from BS import db
+from BS.factory import db
 from BS.Bank.models import Bank, Atm, Branches, Account, AccountType, Loans, Insurances, TransactionTypes, Transactions, \
     OtpByMail
 from BS.Bank.schemas import BankDetailSchema, AtmDetailSchema, UpdateAtmDetailSchema, BranchDetailSchema, \

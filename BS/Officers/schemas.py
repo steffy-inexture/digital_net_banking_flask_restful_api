@@ -1,6 +1,6 @@
 from marshmallow import post_load
 
-from BS import ma
+from BS.factory import ma
 from BS.Bank.models import LoanTypes, InsuranceTypes, Loans, Insurances
 
 

@@ -3,7 +3,7 @@ from flask.views import MethodView
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 
-from BS import db
+from BS.factory import db
 from BS.User import services
 from BS.User.schemas import RegisterUserSchema, ParticularUserSchema
 

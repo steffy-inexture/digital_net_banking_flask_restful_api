@@ -1,5 +1,5 @@
 from sqlalchemy.orm import relationship
-from BS import db
+from BS.factory import db
 
 
 class User(db.Model):

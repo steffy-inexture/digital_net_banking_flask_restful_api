@@ -1,7 +1,7 @@
 from flask import jsonify, request
 from marshmallow import ValidationError
 
-from BS import db
+from BS.factory import db
 from BS.Bank.models import LoanTypes, InsuranceTypes, Loans, Insurances, Account
 from BS.Officers import constants
 from BS.Officers.schemas import LoanTypeSchema, UpdateLoanTypeDetailSchema, InsuranceTypeSchema, \
