@@ -79,4 +79,31 @@ class ParticularInsuranceType(MethodView):
     def delete(cls, id):
         return cls.insurance_service.delete_particular_insurance_type(id)
 
+
 # for insurance officer ends
+
+# for loan officer
+class LoanRequests(MethodView):
+    decorators = [jwt_required(), is_loan_officer()]
+    loan_req_service = services.LoanRequestsServices()
+
+    @classmethod
+    def get(cls):
+        return cls.loan_req_service.get_all_loan_requests()
+
+    @classmethod
+    def put(cls,id):
+        return cls.loan_req_service.approval_for_loan(id)
+
+# for insurance officer
+class InsuranceRequests(MethodView):
+    decorators = [jwt_required(), is_insurance_officer()]
+    insurance_req_service = services.InsuranceRequestsServices()
+
+    @classmethod
+    def get(cls):
+        return cls.insurance_req_service.get_all_insurance_requests()
+
+    @classmethod
+    def put(cls,id):
+        return cls.insurance_req_service.approval_for_insurance(id)

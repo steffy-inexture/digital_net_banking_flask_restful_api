@@ -1,5 +1,8 @@
 from flask.views import MethodView
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
 from BS.Bank import services
+from BS.User.utils import is_user
 
 
 class BankDetail(MethodView):
@@ -71,3 +74,69 @@ class ParticularBranches(MethodView):
     @classmethod
     def put(cls, id):
         return cls.branch_service.put_particular_branch(id)
+
+
+class LoanRequest(MethodView):
+    decorators = [jwt_required(), is_user()]
+    loan_request_service = services.LoanRequestService()
+
+    @classmethod
+    def post(cls):
+        return cls.loan_request_service.loan_request()
+
+class InsuranceRequest(MethodView):
+    decorators = [jwt_required(), is_user()]
+    insurance_request_service = services.InsuranceRequestService()
+
+    @classmethod
+    def post(cls):
+        return cls.insurance_request_service.insurance_request()
+
+class TransactMoney(MethodView):
+    decorators = [jwt_required(), is_user()]
+    transact_money_service = services.TransactMoneyService()
+
+    @classmethod
+    def post(cls):
+        return cls.transact_money_service.account_transfer()
+
+class CheckOtp(MethodView):
+    decorators = [jwt_required(), is_user()]
+    transact_money_service = services.TransactMoneyService()
+
+    @classmethod
+    def post(cls,transaction_id):
+        return cls.transact_money_service.check_otp(transaction_id)
+
+class PayLoanAmount(MethodView):
+    decorators = [jwt_required(), is_user()]
+    service = services.PayBackService()
+
+    @classmethod
+    def post(cls):
+        return cls.service.pay_loan()
+
+class PayInsuranceAmount(MethodView):
+    decorators = [jwt_required(), is_user()]
+    service = services.PayBackService()
+
+    @classmethod
+    def post(cls):
+        return cls.service.pay_insurance()
+
+
+class TransferToSaving(MethodView):
+    decorators = [jwt_required(), is_user()]
+    service = services.PayBackService()
+
+    @classmethod
+    def post(cls):
+        return cls.service.transfer_to_saving()
+
+class SavingToAcc(MethodView):
+    decorators = [jwt_required(), is_user()]
+    service = services.PayBackService()
+
+    @classmethod
+    def post(cls):
+        return cls.service.transfer_to_account()

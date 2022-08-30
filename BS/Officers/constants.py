@@ -15,3 +15,11 @@ INSURANCE_TYPE_DELETED = "Desired Insurance Type has been deleted successfully!.
 INSURANCE_TYPE_UPDATED = "Insurance Type has been updated"
 INSURANCE_TYPE_IS_NOT_EXISTED = "Insurance type is not existed..."
 INSURANCE_TYPE_IS_OCCUPIED = "This Insurance type is occupied with some user..can not delete..."
+
+# LOAN REQUESTS
+THIS_USER_HAS_NO_LOAN = "This user has not applied for any loan..."
+LOAN_STATUS_UPDATED = "Loan status for user has been updated..."
+STATUS_IS_ALREADY_ACTIVATED = "Status is already on desired status..."
+# INSURANCE REQUESTS
+THIS_USER_HAS_NO_INSURANCE = "This user has not applied for any Insurance..."
+INSURANCE_STATUS_UPDATED = "Insurance status for user has been updated..."

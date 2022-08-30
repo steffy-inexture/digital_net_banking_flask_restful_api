@@ -7,3 +7,8 @@ class Config:
     JWT_SECRET_KEY = 'sdfghjjjjjjjjjjjjjjjjjj'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=1)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=30)
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'steffykhristi.18.ce@iite.indusuni.ac.in'
+    MAIL_PASSWORD = 'rpmvdxckolclxdos'

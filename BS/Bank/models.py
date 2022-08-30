@@ -88,6 +88,7 @@ class LoanTypes(db.Model):
 
     loan = relationship("Loans", cascade="all, delete", backref='loan_types', lazy='dynamic')
 
+
 class Loans(db.Model):
     """
         User's loan details stored in Loan table
@@ -99,6 +100,7 @@ class Loans(db.Model):
     paid_amount = db.Column(db.Float, nullable=False, default=0.0)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     loan_type_id = db.Column(db.Integer, db.ForeignKey('loan_types.id', ondelete='CASCADE'), nullable=False)
+
 
 class InsuranceTypes(db.Model):
     """
@@ -113,8 +115,9 @@ class InsuranceTypes(db.Model):
     def __repr__(self):
         return f"Insurance_types('{self.id}','{self.name}','{self.monthly_pay}')"
 
+
 class Insurances(db.Model):
-    __table_name__='insurances'
+    __table_name__ = 'insurances'
     id = db.Column(db.Integer, primary_key=True)
     amount = db.Column(db.Float, nullable=False, default=0.0)
     status = db.Column(db.String(100), nullable=False, default='Inactive')
@@ -124,3 +127,33 @@ class Insurances(db.Model):
 
     def __repr__(self):
         return f"Insurance('{self.id}','{self.amount}','{self.status}')"
+
+
+class TransactionTypes(db.Model):
+    __tablename__ = 'transaction_types'
+    id = db.Column(db.Integer, primary_key=True)
+    type = db.Column(db.String(100), nullable=False, default='Debit')
+
+
+class Transactions(db.Model):
+    __tablename__ = 'transactions'
+    id = db.Column(db.Integer, primary_key=True)
+    amount = db.Column(db.Integer, nullable=False, default=0)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    receiver_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    transaction_type_id = db.Column(db.Integer, db.ForeignKey('transaction_types.id', ondelete='CASCADE'),
+                                    nullable=False)
+    date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    is_transfer = db.Column(db.String(100), nullable=False, default='None')
+
+
+class OtpByMail(db.Model):
+    """
+        Temporary stores the otp which is sent to mail address [ for transaction purpose ]
+        deleted after usage
+    """
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(320), nullable=False)
+    sender_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    transaction_id = db.Column(db.Integer, db.ForeignKey('transactions.id', ondelete='CASCADE'), nullable=False)
+    otp = db.Column(db.Integer, nullable=False)
