@@ -4,7 +4,7 @@ from flask import jsonify
 from flask_jwt_extended import get_jwt_identity
 from flask_mail import Message
 
-from BS.factory import mail, db
+from BS import mail, db
 from BS.Bank.models import OtpByMail, Loans
 from BS.User.models import User
 

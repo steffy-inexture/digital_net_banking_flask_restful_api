@@ -1,6 +1,6 @@
 from marshmallow import post_load, ValidationError, validates_schema, fields
 
-from BS.factory import ma
+from BS import ma
 from BS.User.models import User
 
 

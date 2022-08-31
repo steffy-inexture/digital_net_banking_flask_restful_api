@@ -2,7 +2,7 @@ from flask_jwt_extended import get_jwt_identity
 from flask_marshmallow import fields
 from marshmallow import post_load, validates_schema, ValidationError
 
-from BS.factory import ma
+from BS import ma
 from BS.Bank.models import Bank, Atm, Branches, LoanTypes, InsuranceTypes, Transactions, Account, OtpByMail
 
 

@@ -1,6 +1,6 @@
 from datetime import datetime
 from sqlalchemy.orm import relationship
-from BS.factory import db
+from BS import db
 
 
 class Bank(db.Model):

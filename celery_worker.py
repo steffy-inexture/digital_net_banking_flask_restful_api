@@ -1,6 +1,6 @@
-from BS import celery
+from BS import create_app
 from BS.celery_utils import init_celery
-from BS.factory import create_app
+from BS.factory import celery
 
 app = create_app()
-init_celery(celery,app)
+init_celery(celery, app)

@@ -5,7 +5,7 @@ from flask import request, jsonify
 from flask_jwt_extended import get_jwt_identity
 from sqlalchemy import func
 
-from BS.factory import db
+from BS import db
 from BS.Bank.models import Account, Cards
 from BS.User import constants
 from BS.User.models import User

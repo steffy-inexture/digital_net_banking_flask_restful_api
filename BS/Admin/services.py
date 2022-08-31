@@ -2,7 +2,7 @@
 from flask import jsonify, request
 from marshmallow import ValidationError
 
-from BS.factory import db
+from BS import db
 from BS.Admin import constants
 from BS.Admin.schemas import AllUserRolesSchema, UserDataSchema, AccountTypeSchema, CardRequestSchema, \
     StatusCardRequestSchema
