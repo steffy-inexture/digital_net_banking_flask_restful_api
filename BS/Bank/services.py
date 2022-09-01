@@ -9,7 +9,7 @@ from BS.Bank.models import Bank, Atm, Branches, Account, AccountType, Loans, Ins
 from BS.Bank.schemas import BankDetailSchema, AtmDetailSchema, UpdateAtmDetailSchema, BranchDetailSchema, \
     UpdateBranchDetailSchema, LoanRequestSchema, InsuranceRequestSchema, TransactMoneySchema, OtpCheck, PayBack
 from BS.Bank import constants
-from BS.Bank.utils import send_otp_email
+from BS.Bank.utils import send_otp_email, send_mail_for_successfull
 from BS.User.models import User
 
 
@@ -288,6 +288,7 @@ class TransactMoneyService:
                         transaction.is_transfer = 'Success'
                         db.session.delete(otp_in_db)
                         db.session.commit()
+                        send_mail_for_successfull(transaction_id)
                     return jsonify({'message': constants.TRANSACTION_DONE_SUCCESSFULLY})
                 else:
                     db.session.delete(otp_in_db)

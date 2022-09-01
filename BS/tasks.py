@@ -14,3 +14,4 @@ def loan_detail():
 def insurance_detail():
     insurances = Insurances.query.all()
     print("this is insurances", insurances)
+    

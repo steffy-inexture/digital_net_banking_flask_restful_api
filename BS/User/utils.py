@@ -13,6 +13,7 @@ def is_user():
             verify_jwt_in_request()
             user = User.query.filter_by(id=get_jwt_identity()).first()
             user_role = UserRoles.query.filter_by(id=user.user_role_id).first()
+            print("+++++++++++++++++++++++++++",user)
             if user_role.role == 'user':
                 return fn(*args, **kwargs)
             else:

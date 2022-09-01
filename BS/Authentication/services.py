@@ -42,7 +42,7 @@ class LoginService:
             user_detail = User.query.filter_by(email=login_user['email']).first()
             access_token = create_access_token(identity=user_detail.id)
             refresh_token = create_refresh_token(identity=user_detail.id)
-            return jsonify({'token': {'access_token': access_token, 'refresh_token': refresh_token},
+            return jsonify({'access_token': access_token.decode('utf-8'), 'refresh_token': refresh_token.decode('utf-8'),
                             'message': 'Login Successfully'}), 200
 
         except ValidationError as err:

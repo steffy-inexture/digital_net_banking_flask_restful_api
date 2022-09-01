@@ -1,3 +1,6 @@
+import os
+
+from BS.celery_utils import init_celery
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
@@ -12,9 +15,15 @@ bcrypt = Bcrypt()
 jwt = JWTManager()
 mail = Mail()
 
+PKG_NAME = os.path.dirname(os.path.realpath(__file__)).split("/")[-1]
 
-def create_app(config_class=Config):
-    app = Flask(__name__)
+
+def create_app(app_name=PKG_NAME, **kwargs):
+    app = Flask(app_name)
+    if kwargs.get("celery"):
+        init_celery(kwargs.get("celery"), app)
+
+    # app = Flask(__name__)
     app.config.from_object(Config)
     db.init_app(app)
     ma.init_app(app)
